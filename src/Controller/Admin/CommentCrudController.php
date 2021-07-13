@@ -24,21 +24,13 @@ class CommentCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-
-//        $fields = parent::configureFields($pageName);
-//        $fields[] = AssociationField::new('conference');
-//        return $fields;
         return [
             yield TextField::new('author'),
             yield TextField::new('text'),
             yield EmailField::new('email'),
-            yield IntegerField::new('conference'),
-////            yield MenuItem::linkToCrud('conference', 'fa fa-tags', Conference::class),
-//
-////            yield TextField::new('conference'),
+            yield AssociationField::new('conference'),
             yield DateField::new('created_at'),
             yield TextField::new('photo_file_name', "Photo's name"),
-//
         ];
     }
 

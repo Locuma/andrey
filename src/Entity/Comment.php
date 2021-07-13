@@ -38,9 +38,8 @@ class Comment
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Conference::class, inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Conference", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @ORM\Column (type="integer")
      */
     private $conference;
 
