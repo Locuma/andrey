@@ -3,14 +3,25 @@
 
 namespace App\Controller;
 
+use App\Entity\Conference;
+use App\Repository\ConferenceRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Psr\Log\LoggerInterface;
 use App\Services\GreetingGenerator;
+use Twig\Environment;
+use App\EventSubscriber\TwigEventSubscriber;
 
 class DefaultController extends AbstractController
 {
+    private $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     /**
      * @param $name
      * @param GreetingGenerator $greetingGenerator
@@ -27,9 +38,20 @@ class DefaultController extends AbstractController
     /**
      * @Route ("/", name="homepage")
      */
-    public function homepage(): Response
+    public function homepage(ConferenceRepository $conferenceRepository): Response
     {
-        return new Response("Dis is homepage");
+//        return new Response("Dis is homepage");
+//        return new Response($this->twig->render('base.html.twig',
+//            [
+//                'conferences'=>$conferences
+//            ]));
+
+        return new Response($this->twig->render('base.html.twig'));
+
+//        return new Response($this->twig->render('base.html.twig', [
+//            'conferences'=>$conferenceRepository->findAll(),
+//            ]));
+
     }
 
     /**
