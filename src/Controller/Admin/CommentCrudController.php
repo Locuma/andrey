@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -30,7 +31,7 @@ class CommentCrudController extends AbstractCrudController
             yield EmailField::new('email'),
             yield AssociationField::new('conference'),
             yield DateField::new('created_at'),
-            yield TextField::new('photo_file_name', "Photo's name"),
+            yield ImageField::new('photo_file_name', "Photo's name")->setBasePath('/uploads/photos'),
         ];
     }
 
