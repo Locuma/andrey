@@ -31,6 +31,7 @@ class CommentCrudController extends AbstractCrudController
             yield EmailField::new('email'),
             yield AssociationField::new('conference'),
             yield DateField::new('created_at'),
+            yield TextField::new('state'),
             yield ImageField::new('photo_file_name', "Photo's name")->setBasePath('/uploads/photos'),
         ];
     }
